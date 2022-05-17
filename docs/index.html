@@ -14537,13 +14537,13 @@ dtype: int64</pre>
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 
-<div id="altair-viz-38e03a4481c545cca3f907d76ca8de40"></div>
+<div id="altair-viz-ca8288734930447c9a4fec5227ccc879"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-38e03a4481c545cca3f907d76ca8de40") {
-      outputDiv = document.getElementById("altair-viz-38e03a4481c545cca3f907d76ca8de40");
+    if (outputDiv.id !== "altair-viz-ca8288734930447c9a4fec5227ccc879") {
+      outputDiv = document.getElementById("altair-viz-ca8288734930447c9a4fec5227ccc879");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -14775,13 +14775,13 @@ Max value of order_amount is: 704000
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 
-<div id="altair-viz-7ba4ccbbf1fa42fcbfdae2e079cb67fb"></div>
+<div id="altair-viz-14b4bec39d8349e7b713690238c74300"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-7ba4ccbbf1fa42fcbfdae2e079cb67fb") {
-      outputDiv = document.getElementById("altair-viz-7ba4ccbbf1fa42fcbfdae2e079cb67fb");
+    if (outputDiv.id !== "altair-viz-14b4bec39d8349e7b713690238c74300") {
+      outputDiv = document.getElementById("altair-viz-14b4bec39d8349e7b713690238c74300");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -14890,7 +14890,7 @@ Max value of order_amount is: 704000
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;shop_id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">42</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;shop_id == 42&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -14906,25 +14906,94 @@ Max value of order_amount is: 704000
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>     order_id  shop_id  user_id  order_amount  total_items payment_method  \
-15         16       42      607        704000         2000    credit_card   
-40         41       42      793           352            1    credit_card   
-60         61       42      607        704000         2000    credit_card   
-308       309       42      770           352            1    credit_card   
-409       410       42      904           704            2    credit_card   
 
-              created_at  
-15    2017-03-07 4:00:00  
-40   2017-03-24 14:15:41  
-60    2017-03-04 4:00:00  
-308  2017-03-11 18:14:39  
-409  2017-03-04 14:32:58  
-</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_id</th>
+      <th>shop_id</th>
+      <th>user_id</th>
+      <th>order_amount</th>
+      <th>total_items</th>
+      <th>payment_method</th>
+      <th>created_at</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>42</td>
+      <td>607</td>
+      <td>704000</td>
+      <td>2000</td>
+      <td>credit_card</td>
+      <td>2017-03-07 4:00:00</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>41</td>
+      <td>42</td>
+      <td>793</td>
+      <td>352</td>
+      <td>1</td>
+      <td>credit_card</td>
+      <td>2017-03-24 14:15:41</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>61</td>
+      <td>42</td>
+      <td>607</td>
+      <td>704000</td>
+      <td>2000</td>
+      <td>credit_card</td>
+      <td>2017-03-04 4:00:00</td>
+    </tr>
+    <tr>
+      <th>308</th>
+      <td>309</td>
+      <td>42</td>
+      <td>770</td>
+      <td>352</td>
+      <td>1</td>
+      <td>credit_card</td>
+      <td>2017-03-11 18:14:39</td>
+    </tr>
+    <tr>
+      <th>409</th>
+      <td>410</td>
+      <td>42</td>
+      <td>904</td>
+      <td>704</td>
+      <td>2</td>
+      <td>credit_card</td>
+      <td>2017-03-04 14:32:58</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+</div>
+
 </div>
 
 </div>
@@ -15176,13 +15245,13 @@ Max value of order_amount is: 704000
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 
-<div id="altair-viz-ef74ea7d7328497e952b5496f53d9456"></div>
+<div id="altair-viz-c78e3427d5e44a2d967dad565ad468a0"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-ef74ea7d7328497e952b5496f53d9456") {
-      outputDiv = document.getElementById("altair-viz-ef74ea7d7328497e952b5496f53d9456");
+    if (outputDiv.id !== "altair-viz-c78e3427d5e44a2d967dad565ad468a0") {
+      outputDiv = document.getElementById("altair-viz-c78e3427d5e44a2d967dad565ad468a0");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -15334,13 +15403,13 @@ Max value of order_amount for Shop #42 is: 704000
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 
-<div id="altair-viz-0dd5f2491d4841d88f31ed6631231b7f"></div>
+<div id="altair-viz-442906fef7754e5ca9e16e7e615dc605"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-0dd5f2491d4841d88f31ed6631231b7f") {
-      outputDiv = document.getElementById("altair-viz-0dd5f2491d4841d88f31ed6631231b7f");
+    if (outputDiv.id !== "altair-viz-442906fef7754e5ca9e16e7e615dc605") {
+      outputDiv = document.getElementById("altair-viz-442906fef7754e5ca9e16e7e615dc605");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -15632,13 +15701,13 @@ Max value of order_amount for Shop #78 is: 154350
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 
-<div id="altair-viz-a1e5345a02934842b55384f3eda5facc"></div>
+<div id="altair-viz-2dbb2625ece74d55b894c22c9b8e050d"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-a1e5345a02934842b55384f3eda5facc") {
-      outputDiv = document.getElementById("altair-viz-a1e5345a02934842b55384f3eda5facc");
+    if (outputDiv.id !== "altair-viz-2dbb2625ece74d55b894c22c9b8e050d") {
+      outputDiv = document.getElementById("altair-viz-2dbb2625ece74d55b894c22c9b8e050d");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -15741,13 +15810,13 @@ Max value of order_amount for Shop #78 is: 154350
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 
-<div id="altair-viz-59bd4e56ce0c4fe79f9d1946053bbdc1"></div>
+<div id="altair-viz-08e33ae961c4436e8cdb6f40b13ddd62"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-59bd4e56ce0c4fe79f9d1946053bbdc1") {
-      outputDiv = document.getElementById("altair-viz-59bd4e56ce0c4fe79f9d1946053bbdc1");
+    if (outputDiv.id !== "altair-viz-08e33ae961c4436e8cdb6f40b13ddd62") {
+      outputDiv = document.getElementById("altair-viz-08e33ae961c4436e8cdb6f40b13ddd62");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
