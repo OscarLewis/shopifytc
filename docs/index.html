@@ -15826,6 +15826,33 @@ Max value of order_amount for Shop #78 is: 154350
 
 </div>
 </div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Question-2:">Question 2:<a class="anchor-link" href="#Question-2:">&#182;</a></h3>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Question-2a:">Question 2a:<a class="anchor-link" href="#Question-2a:">&#182;</a></h4>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
+<pre><code>SELECT ShipperName, COUNT(Orders.ShipperID)
+FROM Orders, Shippers 
+WHERE Orders.ShipperID = Shippers.ShipperID
+GROUP BY Orders.ShipperID;</code></pre>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>How many orders were shipped by Speedy Express in total?<br>
+<strong>In total there were 54 orders shipped by Speedy Express.</strong></p>
+
+</div>
+</div>
 </body>
 
 
