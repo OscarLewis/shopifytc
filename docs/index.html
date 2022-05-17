@@ -14512,9 +14512,12 @@ dtype: int64</pre>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;order_amount:Q&#39;</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;count(order_amount):Q&#39;</span><span class="p">,</span>
-    <span class="n">tooltip</span> <span class="o">=</span> <span class="p">[</span><span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s1">&#39;order_amount:Q&#39;</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span><span class="s2">&quot;Order Amount&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;$.2f&#39;</span><span class="p">),</span><span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s1">&#39;count(order_amount):Q&#39;</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span><span class="s2">&quot;Count of Records&quot;</span><span class="p">)]</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;order_amount:Q&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;count(order_amount):Q&quot;</span><span class="p">,</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;order_amount:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Order Amount&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;$.2f&quot;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;count(order_amount):Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Count of Records&quot;</span><span class="p">),</span>
+    <span class="p">],</span>
 <span class="p">)</span>
 </pre></div>
 
@@ -15541,8 +15544,14 @@ Max value of order_amount for Shop #78 is: 154350
 <span class="n">total_revenue_by_total_item</span> <span class="o">=</span> <span class="n">total_revenue_by_total_item</span><span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span>
     <span class="s2">&quot;total_items&quot;</span>
 <span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">total_revenue_by_total_item</span><span class="p">[</span><span class="s1">&#39;percent_total_order_amount&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">total_revenue_by_total_item</span><span class="o">.</span><span class="n">total_order_amount</span> <span class="o">/</span> <span class="n">total_revenue_by_total_item</span><span class="p">[</span><span class="s1">&#39;total_order_amount&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">total_revenue_by_total_item</span><span class="p">[</span><span class="s1">&#39;percent_count_of_orders&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">total_revenue_by_total_item</span><span class="o">.</span><span class="n">count_of_orders</span> <span class="o">/</span><span class="n">total_revenue_by_total_item</span><span class="p">[</span><span class="s1">&#39;count_of_orders&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">total_revenue_by_total_item</span><span class="p">[</span><span class="s2">&quot;percent_total_order_amount&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">total_revenue_by_total_item</span><span class="o">.</span><span class="n">total_order_amount</span>
+    <span class="o">/</span> <span class="n">total_revenue_by_total_item</span><span class="p">[</span><span class="s2">&quot;total_order_amount&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">total_revenue_by_total_item</span><span class="p">[</span><span class="s2">&quot;percent_count_of_orders&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">total_revenue_by_total_item</span><span class="o">.</span><span class="n">count_of_orders</span>
+    <span class="o">/</span> <span class="n">total_revenue_by_total_item</span><span class="p">[</span><span class="s2">&quot;count_of_orders&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="p">)</span>
 <span class="n">total_revenue_by_total_item</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;total_items&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
@@ -15671,11 +15680,26 @@ Max value of order_amount for Shop #78 is: 154350
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">percent_total_order_amount_chart</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">total_revenue_by_total_item</span><span class="p">)</span><span class="o">.</span><span class="n">mark_arc</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">theta</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Theta</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="s2">&quot;total_order_amount&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;quantitative&quot;</span><span class="p">),</span>
-    <span class="n">color</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s2">&quot;total_items:N&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;rainbow&quot;</span><span class="p">)),</span>
-    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;total_order_amount:Q&quot;</span><span class="p">,</span><span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;percent_total_order_amount:O&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Percent of Total&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%&#39;</span><span class="p">)]</span>
-<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Total Sneaker Revenue Across Shopify by total_items.&quot;</span><span class="p">,</span> <span class="s2">&quot;subtitle&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Colored by total_items in each Order.&quot;</span><span class="p">]})</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">percent_total_order_amount_chart</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">total_revenue_by_total_item</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">mark_arc</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">theta</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Theta</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="s2">&quot;total_order_amount&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;quantitative&quot;</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s2">&quot;total_items:N&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;rainbow&quot;</span><span class="p">)),</span>
+        <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span>
+            <span class="s2">&quot;total_order_amount:Q&quot;</span><span class="p">,</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span>
+                <span class="s2">&quot;percent_total_order_amount:O&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Percent of Total&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%&quot;</span>
+            <span class="p">),</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+        <span class="n">title</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Total Sneaker Revenue Across Shopify by total_items.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;subtitle&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Colored by total_items in each Order.&quot;</span><span class="p">],</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 <span class="c1"># pie = percent_total_order_amount_chart.mark_arc(outerRadius=120)</span>
 <span class="c1"># text = percent_total_order_amount_chart.mark_text(radius=140, size=10).encode(alt.Text(&quot;percent_total_order_amount:O&quot;, format =&#39;%&#39;))</span>
 <span class="c1"># pie + text</span>
@@ -15782,11 +15806,26 @@ Max value of order_amount for Shop #78 is: 154350
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">percent_total_order_amount_chart</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">total_revenue_by_total_item</span><span class="p">)</span><span class="o">.</span><span class="n">mark_arc</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">theta</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Theta</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="s2">&quot;percent_count_of_orders&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;quantitative&quot;</span><span class="p">),</span>
-    <span class="n">color</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s2">&quot;total_items:N&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;rainbow&quot;</span><span class="p">)),</span>
-    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;percent_count_of_orders:O&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Percent of Total Orders&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%&#39;</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;total_items:N&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Total Items in Order&quot;</span><span class="p">)]</span>
-<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Total Sneaker Revenue Across Shopify by count_of_orders.&quot;</span><span class="p">,</span> <span class="s2">&quot;subtitle&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Colored by total_items in each Order.&quot;</span><span class="p">]})</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">percent_total_order_amount_chart</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">total_revenue_by_total_item</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">mark_arc</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">theta</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Theta</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="s2">&quot;percent_count_of_orders&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;quantitative&quot;</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s2">&quot;total_items:N&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;rainbow&quot;</span><span class="p">)),</span>
+        <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span>
+                <span class="s2">&quot;percent_count_of_orders:O&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Percent of Total Orders&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%&quot;</span>
+            <span class="p">),</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;total_items:N&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Total Items in Order&quot;</span><span class="p">),</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+        <span class="n">title</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Total Sneaker Revenue Across Shopify by count_of_orders.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;subtitle&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Colored by total_items in each Order.&quot;</span><span class="p">],</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 
 <span class="n">percent_total_order_amount_chart</span>
 </pre></div>
@@ -15889,7 +15928,7 @@ Max value of order_amount for Shop #78 is: 154350
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h5 id="What-metric-would-you-report-for-this-dataset?">What metric would you report for this dataset?<a class="anchor-link" href="#What-metric-would-you-report-for-this-dataset?">&#182;</a></h5><p>For this dataset I would want to report a metric that accomplishes the same goals as AOV, so it is first important to recognize what those are. We are trying to use AOV to gauge how much money per order the average Shopify shop selling sneakers is making. In order to get this average, AOV looks at the overall average &amp; central tendency of our dataset, however we now know that this is skewed because of the bulk orders from Shop #42. This means AOV is in fact capturing a higher area of our domain.</p>
 <ul>
-<li>We know that <strong>total_items</strong> varies dramatically between orders, which directly effects the AOV calculation for those orders.  </li>
+<li>We know that <strong>total_items</strong> varies dramatically between orders, which directly effects the AOV calculation for those orders.</li>
 <li>We also know that some stores (Shop #42 specifically) will sell bulk orders of 2,000 shoes per order priced at <strong>\$352</strong> a pair. <strong>This is a very different selling practice than luxury stores like Shop #78</strong> which will sell a pair of sneakers for no less than <strong>\$25,725</strong> and has never sold more than 6 pairs in a single order. By including these shops in the same AOV calculation, we are including outliers and distorting the story of the average shop in our dataset.</li>
 </ul>
 
@@ -15909,7 +15948,7 @@ Max value of order_amount for Shop #78 is: 154350
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 
 <pre><code>SELECT ShipperName, COUNT(Orders.ShipperID)
-FROM Orders, Shippers 
+FROM Orders, Shippers
 WHERE Orders.ShipperID = Shippers.ShipperID
 GROUP BY Orders.ShipperID;</code></pre>
 
@@ -15931,7 +15970,7 @@ GROUP BY Orders.ShipperID;</code></pre>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 
 <pre><code>SELECT LastName, COUNT(Orders.EmployeeID)
-FROM Orders, Employees 
+FROM Orders, Employees
 WHERE Orders.EmployeeID = Employees.EmployeeID
 GROUP BY Orders.EmployeeID
 Order by COUNT(Orders.EmployeeID) Desc;</code></pre>
