@@ -15853,6 +15853,57 @@ GROUP BY Orders.ShipperID;</code></pre>
 
 </div>
 </div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Question-2b:">Question 2b:<a class="anchor-link" href="#Question-2b:">&#182;</a></h4>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
+<pre><code>SELECT LastName, COUNT(Orders.EmployeeID)
+FROM Orders, Employees 
+WHERE Orders.EmployeeID = Employees.EmployeeID
+GROUP BY Orders.EmployeeID
+Order by COUNT(Orders.EmployeeID) Desc;</code></pre>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>What is the last name of the employee with the most orders?<br>
+<strong>"Peacock" is the last name of the employee with the most orders.</strong></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Question-2c:">Question 2c:<a class="anchor-link" href="#Question-2c:">&#182;</a></h4>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
+<pre><code>SELECT ProductName, Quantity
+FROM(
+    SELECT Products.ProductName as ProductName, OrderDetails.Quantity
+    FROM Orders, Customers, OrderDetails, Products
+    WHERE Orders.CustomerID=Customers.CustomerID
+    AND Orders.OrderID=OrderDetails.OrderID
+    AND Products.ProductID=OrderDetails.ProductID
+    AND Country = 'Germany'
+    Group By Products.ProductID
+    Order by  OrderDetails.Quantity Desc);</code></pre>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>What product was ordered the most by customers in Germany?<br>
+<strong>"Steeleye Stout" was ordered 100 times, which is the most by customers in Germany.</strong></p>
+
+</div>
+</div>
 </body>
 
 
