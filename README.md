@@ -1,2 +1,3 @@
-Data Science Intern Challenge Shopify 2022.
-Please downloand and open [the exported HTML file](https://github.com/OscarLewis/shopifytc/blob/main/tech-challenge.html)
+Data Science Intern Challenge Shopify 2022.  
+
+Please open this [Github project page](https://oscarlewis.github.io/shopifytc/index.html) to view my submission.
