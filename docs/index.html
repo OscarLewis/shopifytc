@@ -15948,8 +15948,8 @@ Max value of order_amount for Shop #78 is: 154350
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 
 <pre><code>SELECT ShipperName, COUNT(Orders.ShipperID)
-FROM Orders, Shippers
-WHERE Orders.ShipperID = Shippers.ShipperID
+FROM Orders
+INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID
 GROUP BY Orders.ShipperID;</code></pre>
 
 </div>
@@ -15970,8 +15970,8 @@ GROUP BY Orders.ShipperID;</code></pre>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 
 <pre><code>SELECT LastName, COUNT(Orders.EmployeeID)
-FROM Orders, Employees
-WHERE Orders.EmployeeID = Employees.EmployeeID
+FROM Orders
+INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
 GROUP BY Orders.EmployeeID
 Order by COUNT(Orders.EmployeeID) Desc;</code></pre>
 
@@ -15993,15 +15993,16 @@ Order by COUNT(Orders.EmployeeID) Desc;</code></pre>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 
 <pre><code>SELECT ProductName, Quantity
-FROM(
-    SELECT Products.ProductName as ProductName, OrderDetails.Quantity
-    FROM Orders, Customers, OrderDetails, Products
-    WHERE Orders.CustomerID=Customers.CustomerID
-    AND Orders.OrderID=OrderDetails.OrderID
-    AND Products.ProductID=OrderDetails.ProductID
-    AND Country = 'Germany'
-    Group By Products.ProductID
-    Order by  OrderDetails.Quantity Desc);</code></pre>
+FROM (
+  SELECT Products.ProductName as ProductName, COUNT(Products.ProductName) as ProductCount
+  FROM Orders
+  INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID
+  INNER JOIN OrderDetails ON Orders.OrderID=OrderDetails.OrderID
+  INNER JOIN Products ON Products.ProductID=OrderDetails.ProductID
+  WHERE Country = 'Germany'
+  GROUP BY Products.ProductName
+  Order by COUNT(Products.ProductName) Desc
+  );</code></pre>
 
 </div>
 </div>
